@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/gnber/Documents/ACO Algorithm/ACO.h
+
+C:/Users/gnber/Documents/ACO Algorithm/main.c
+stdlib.h
+-
+time.h
+-
+ACO.h
+C:/Users/gnber/Documents/ACO Algorithm/ACO.h
+stdio.h
+-
+
