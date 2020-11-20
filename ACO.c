@@ -187,9 +187,7 @@ int * BuildTrail(int k, int start, double ** pheromones, int ** dists, int numCi
 
         visited[next] = 1;
     }
-
-
-
+    free(visited);
     return trail;
 }
 
@@ -199,11 +197,11 @@ int NextCity(int k, int cityX, int *visited, double **pheromones, int **dists, i
     double *probs = MoveProbs(k, cityX, visited, pheromones, dists, numCities);
 
     double *cumul = (double *) calloc(numCities + 1, sizeof(double));
-    for (int i = 0; i <= numCities - 1; i++)
+    for (int i = 0; i <= numCities - 2; i++)
     {
         cumul[i + 1] = cumul[i] + probs[i];
     }
-
+    free(probs);
     cumul[numCities] = 1.0;
 
     double p = randomdouble();
@@ -213,6 +211,7 @@ int NextCity(int k, int cityX, int *visited, double **pheromones, int **dists, i
 //        printf("\n P(%lf) >= cumul[%d](%lf) && P(%lf) < cumul[%d](%lf)", p, i, cumul[i], p, i+1, cumul[i+1]);
         if (p >= cumul[i] && p < cumul[i + 1])
         {
+            free(cumul);
             return i;
         }
     }
@@ -277,7 +276,7 @@ double *MoveProbs(int k, int cityX, int * visited, double **pheromones, int **di
         probs[i] = taueta[i] / sum;
         // big trouble if sum = 0.0
     }
-
+    free(taueta);
     return probs;
 }
 

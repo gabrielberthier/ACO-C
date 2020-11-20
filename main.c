@@ -37,8 +37,8 @@ int main()
     printf("\nBegin Ant Colony Optimization demo\n");
 
     int numCities = 60;
-    int numAnts = 4;
-    int maxTime = 5000;
+    int numAnts = 10;
+    int maxTime = 3000;
 
     printf("Number of cities in problem = %d\n", numCities);
 
@@ -85,7 +85,8 @@ int main()
             bestLength = currBestLength;
             bestTrail = currBestTrail;
             printf("New best length of %.2f found at time %d", bestLength, time);
-        }
+        } else
+            free(currBestTrail);
         time += 1;
     }
 
